@@ -167,7 +167,7 @@ export default function CelonisLanding() {
             <div className="hidden md:block">
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="bg-red-600 hover:bg-red-700 text-white animate-pulse-glow"
+                className="bg-red-600 hover:bg-red-700 text-white"
               >
                 Schedule Process Audit
               </Button>
@@ -252,14 +252,14 @@ export default function CelonisLanding() {
               <div className="flex items-center gap-2 mb-6">
                 <Badge
                   variant="outline"
-                  className="border-red-200 text-red-700 bg-red-50"
+                  className="border-[#00000040] text-[#10172b] bg-[#fff]"
                 >
                   <Award className="w-4 h-4 mr-1" />
                   Certified Celonis Partner
                 </Badge>
                 <Badge
                   variant="outline"
-                  className="border-red-300 text-red-600 bg-red-50"
+                  className="border-[#00000040] text-[#10172b] bg-[#fff]"
                 >
                   <Sparkles className="w-4 h-4 mr-1" />
                   Saudi Arabia
@@ -284,7 +284,7 @@ export default function CelonisLanding() {
                 <Button
                   onClick={() => scrollToSection("contact")}
                   size="lg"
-                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold animate-pulse-glow"
+                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold"
                 >
                   Schedule Process Audit
                 </Button>
@@ -292,7 +292,7 @@ export default function CelonisLanding() {
                   onClick={() => scrollToSection("services")}
                   variant="outline"
                   size="lg"
-                  className="border-red-600 text-red-600 hover:bg-red-50 px-8 py-4 text-lg"
+                  className="border-[#10172b] text-[#10172b] hover:bg-[#10172b] hover:text-white px-8 py-4 text-lg"
                 >
                   See How It Works
                 </Button>
@@ -301,7 +301,7 @@ export default function CelonisLanding() {
 
             <div className="lg:pl-12 animate-float">
               <div className="relative">
-                <div className="bg-gradient-to-br from-red-50 via-white to-gray-100 rounded-3xl p-8 lg:p-12 shadow-2xl">
+                <div className="bg-[white] rounded-3xl p-8 lg:p-12 shadow-2xl">
                   <svg viewBox="0 0 400 300" className="w-full h-auto">
                     <defs>
                       <linearGradient
@@ -1044,11 +1044,11 @@ export default function CelonisLanding() {
               <div className="relative">
                 <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-3xl p-8 lg:p-12 shadow-2xl border border-slate-600">
                   <div className="text-center">
-                    <div className="w-24 h-24 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <div className="rounded-2xl flex items-center justify-center mx-auto mb-6">
                       <img
-                        src="/Celonis Logo.png"
+                        src="/green.png"
                         alt="AOT Logo"
-                        className="h-10 w-auto"
+                        className="h-20 w-auto"
                       />
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-2">
@@ -1160,8 +1160,7 @@ export default function CelonisLanding() {
               Why Work <span className="text-red-600">With Us?</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Experience the difference of working with certified Celonis
-              experts who understand your market
+              Your Trusted Partner in Business Process Optimization — Experience the difference of working with certified Celonis experts who understand your market.
             </p>
           </div>
 
@@ -1303,7 +1302,7 @@ export default function CelonisLanding() {
             <Button
               onClick={() => scrollToSection("contact")}
               size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold animate-pulse-glow"
+              className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold"
             >
               Schedule Free Consultation
             </Button>
