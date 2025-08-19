@@ -136,11 +136,11 @@
 
 /* Updated gradient backgrounds to use red color scheme */
 .bg-gradient-hero {
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 50%, #fef2f2 100%);
+  background: linear-gradient(135deg, #fef2f2 0%, #fef2f2 50%, #fef2f2 100%);
 }
 
 .bg-gradient-modern {
-  background: linear-gradient(135deg, #f2f2f2 0%, #fef2f2 100%);
+  background: linear-gradient(135deg, #f2f2f2 0%, #faf2f2 100%);
 }
 
 /* Animated ticker */

@@ -1,17 +1,23 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useToast } from "@/hooks/use-toast"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/hooks/use-toast";
 import {
   CheckCircle,
   Users,
@@ -35,10 +41,10 @@ import {
   Network,
   Sparkles,
   Link,
-} from "lucide-react"
+} from "lucide-react";
 
 export default function CelonisLanding() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,50 +52,56 @@ export default function CelonisLanding() {
     phone: "",
     message: "",
     consent: false,
-  })
-  const { toast } = useToast()
+  });
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up")
+            entry.target.classList.add("animate-fade-in-up");
           }
-        })
+        });
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
-    const elements = document.querySelectorAll(".animate-on-scroll")
-    elements.forEach((el) => observer.observe(el))
+    const elements = document.querySelectorAll(".animate-on-scroll");
+    elements.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!formData.name || !formData.email || !formData.company || !formData.consent) {
+    e.preventDefault();
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.company ||
+      !formData.consent
+    ) {
       toast({
         title: "Please fill in all required fields",
         description: "Name, email, company, and consent are required.",
         variant: "destructive",
-      })
-      return
+      });
+      return;
     }
 
     toast({
       title: "Thank you for your inquiry!",
-      description: "Our team will contact you within 24 hours to discuss your Celonis implementation needs.",
-    })
+      description:
+        "Our team will contact you within 24 hours to discuss your Celonis implementation needs.",
+    });
 
     setFormData({
       name: "",
@@ -98,8 +110,8 @@ export default function CelonisLanding() {
       phone: "",
       message: "",
       consent: false,
-    })
-  }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -163,8 +175,15 @@ export default function CelonisLanding() {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-slate-700 hover:text-red-600 p-2">
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-slate-700 hover:text-red-600 p-2"
+              >
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
@@ -223,16 +242,25 @@ export default function CelonisLanding() {
         )}
       </nav>
 
-      <section id="hero" className="py-20 lg:py-32 bg-gradient-hero overflow-hidden">
+      <section
+        id="hero"
+        className="py-20 lg:py-32 bg-gradient-modern overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-in-right">
               <div className="flex items-center gap-2 mb-6">
-                <Badge variant="outline" className="border-red-200 text-red-700 bg-red-50">
+                <Badge
+                  variant="outline"
+                  className="border-red-200 text-red-700 bg-red-50"
+                >
                   <Award className="w-4 h-4 mr-1" />
                   Certified Celonis Partner
                 </Badge>
-                <Badge variant="outline" className="border-red-300 text-red-600 bg-red-50">
+                <Badge
+                  variant="outline"
+                  className="border-red-300 text-red-600 bg-red-50"
+                >
                   <Sparkles className="w-4 h-4 mr-1" />
                   Saudi Arabia
                 </Badge>
@@ -240,13 +268,16 @@ export default function CelonisLanding() {
 
               <h1 className="text-5xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight">
                 Turn Processes into{" "}
-                <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Profit</span> —
-                Faster
+                <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
+                  Profit
+                </span>{" "}
+                — Faster
               </h1>
 
               <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                Unlock operational excellence with AI-powered process intelligence. We transform your data into
-                measurable business impact through certified Celonis expertise in Saudi Arabia.
+                Unlock operational excellence with AI-powered process
+                intelligence. We transform your data into measurable business
+                impact through certified Celonis expertise in Saudi Arabia.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -270,10 +301,16 @@ export default function CelonisLanding() {
 
             <div className="lg:pl-12 animate-float">
               <div className="relative">
-                <div className="bg-gradient-to-br from-red-50 via-white to-red-100 rounded-3xl p-8 lg:p-12 shadow-2xl">
+                <div className="bg-gradient-to-br from-red-50 via-white to-gray-100 rounded-3xl p-8 lg:p-12 shadow-2xl">
                   <svg viewBox="0 0 400 300" className="w-full h-auto">
                     <defs>
-                      <linearGradient id="modernGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <linearGradient
+                        id="modernGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
                         <stop offset="0%" stopColor="#dc2626" />
                         <stop offset="50%" stopColor="#ef4444" />
                         <stop offset="100%" stopColor="#dc2626" />
@@ -288,44 +325,170 @@ export default function CelonisLanding() {
                     </defs>
 
                     {/* Animated network nodes */}
-                    <circle cx="80" cy="150" r="35" fill="url(#modernGradient)" opacity="0.9" filter="url(#glow)">
-                      <animate attributeName="r" values="35;40;35" dur="3s" repeatCount="indefinite" />
+                    <circle
+                      cx="80"
+                      cy="150"
+                      r="35"
+                      fill="url(#modernGradient)"
+                      opacity="0.9"
+                      filter="url(#glow)"
+                    >
+                      <animate
+                        attributeName="r"
+                        values="35;40;35"
+                        dur="3s"
+                        repeatCount="indefinite"
+                      />
                     </circle>
-                    <circle cx="200" cy="80" r="28" fill="url(#modernGradient)" opacity="0.7">
-                      <animate attributeName="r" values="28;33;28" dur="2.5s" repeatCount="indefinite" />
+                    <circle
+                      cx="200"
+                      cy="80"
+                      r="28"
+                      fill="url(#modernGradient)"
+                      opacity="0.7"
+                    >
+                      <animate
+                        attributeName="r"
+                        values="28;33;28"
+                        dur="2.5s"
+                        repeatCount="indefinite"
+                      />
                     </circle>
-                    <circle cx="200" cy="220" r="28" fill="url(#modernGradient)" opacity="0.7">
-                      <animate attributeName="r" values="28;33;28" dur="2.8s" repeatCount="indefinite" />
+                    <circle
+                      cx="200"
+                      cy="220"
+                      r="28"
+                      fill="url(#modernGradient)"
+                      opacity="0.7"
+                    >
+                      <animate
+                        attributeName="r"
+                        values="28;33;28"
+                        dur="2.8s"
+                        repeatCount="indefinite"
+                      />
                     </circle>
-                    <circle cx="320" cy="150" r="35" fill="url(#modernGradient)" opacity="0.9" filter="url(#glow)">
-                      <animate attributeName="r" values="35;40;35" dur="3.2s" repeatCount="indefinite" />
+                    <circle
+                      cx="320"
+                      cy="150"
+                      r="35"
+                      fill="url(#modernGradient)"
+                      opacity="0.9"
+                      filter="url(#glow)"
+                    >
+                      <animate
+                        attributeName="r"
+                        values="35;40;35"
+                        dur="3.2s"
+                        repeatCount="indefinite"
+                      />
                     </circle>
 
                     {/* Animated connecting lines */}
-                    <line x1="115" y1="150" x2="172" y2="100" stroke="#dc2626" strokeWidth="3" opacity="0.6">
-                      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+                    <line
+                      x1="115"
+                      y1="150"
+                      x2="172"
+                      y2="100"
+                      stroke="#dc2626"
+                      strokeWidth="3"
+                      opacity="0.6"
+                    >
+                      <animate
+                        attributeName="opacity"
+                        values="0.6;1;0.6"
+                        dur="2s"
+                        repeatCount="indefinite"
+                      />
                     </line>
-                    <line x1="115" y1="150" x2="172" y2="200" stroke="#ef4444" strokeWidth="3" opacity="0.6">
-                      <animate attributeName="opacity" values="0.6;1;0.6" dur="2.3s" repeatCount="indefinite" />
+                    <line
+                      x1="115"
+                      y1="150"
+                      x2="172"
+                      y2="200"
+                      stroke="#ef4444"
+                      strokeWidth="3"
+                      opacity="0.6"
+                    >
+                      <animate
+                        attributeName="opacity"
+                        values="0.6;1;0.6"
+                        dur="2.3s"
+                        repeatCount="indefinite"
+                      />
                     </line>
-                    <line x1="228" y1="80" x2="285" y2="130" stroke="#dc2626" strokeWidth="3" opacity="0.6">
-                      <animate attributeName="opacity" values="0.6;1;0.6" dur="2.1s" repeatCount="indefinite" />
+                    <line
+                      x1="228"
+                      y1="80"
+                      x2="285"
+                      y2="130"
+                      stroke="#dc2626"
+                      strokeWidth="3"
+                      opacity="0.6"
+                    >
+                      <animate
+                        attributeName="opacity"
+                        values="0.6;1;0.6"
+                        dur="2.1s"
+                        repeatCount="indefinite"
+                      />
                     </line>
-                    <line x1="228" y1="220" x2="285" y2="170" stroke="#ef4444" strokeWidth="3" opacity="0.6">
-                      <animate attributeName="opacity" values="0.6;1;0.6" dur="2.4s" repeatCount="indefinite" />
+                    <line
+                      x1="228"
+                      y1="220"
+                      x2="285"
+                      y2="170"
+                      stroke="#ef4444"
+                      strokeWidth="3"
+                      opacity="0.6"
+                    >
+                      <animate
+                        attributeName="opacity"
+                        values="0.6;1;0.6"
+                        dur="2.4s"
+                        repeatCount="indefinite"
+                      />
                     </line>
 
                     {/* Modern labels with icons */}
-                    <text x="80" y="155" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">
+                    <text
+                      x="80"
+                      y="155"
+                      textAnchor="middle"
+                      fill="white"
+                      fontSize="14"
+                      fontWeight="bold"
+                    >
                       DATA
                     </text>
-                    <text x="200" y="85" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">
+                    <text
+                      x="200"
+                      y="85"
+                      textAnchor="middle"
+                      fill="white"
+                      fontSize="12"
+                      fontWeight="bold"
+                    >
                       MINE
                     </text>
-                    <text x="200" y="225" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">
+                    <text
+                      x="200"
+                      y="225"
+                      textAnchor="middle"
+                      fill="white"
+                      fontSize="12"
+                      fontWeight="bold"
+                    >
                       ANALYZE
                     </text>
-                    <text x="320" y="155" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">
+                    <text
+                      x="320"
+                      y="155"
+                      textAnchor="middle"
+                      fill="white"
+                      fontSize="14"
+                      fontWeight="bold"
+                    >
                       PROFIT
                     </text>
                   </svg>
@@ -337,7 +500,9 @@ export default function CelonisLanding() {
                 >
                   <div className="flex items-center gap-2">
                     <TrendingUp className="w-4 h-4 text-red-600" />
-                    <span className="text-sm font-semibold text-slate-700">30% Cost ↓</span>
+                    <span className="text-sm font-semibold text-slate-700">
+                      30% Cost ↓
+                    </span>
                   </div>
                 </div>
 
@@ -347,7 +512,9 @@ export default function CelonisLanding() {
                 >
                   <div className="flex items-center gap-2">
                     <Activity className="w-4 h-4 text-red-500" />
-                    <span className="text-sm font-semibold text-slate-700">50% Speed ↑</span>
+                    <span className="text-sm font-semibold text-slate-700">
+                      50% Speed ↑
+                    </span>
                   </div>
                 </div>
               </div>
@@ -387,10 +554,13 @@ export default function CelonisLanding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Why Choose <span className="text-red-600">Process Intelligence</span> with Us?
+              Why Choose{" "}
+              <span className="text-red-600">Process Intelligence</span> with
+              Us?
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our certified expertise and innovative approach transforms your operations into competitive advantages.
+              Our certified expertise and innovative approach transforms your
+              operations into competitive advantages.
             </p>
           </div>
 
@@ -400,11 +570,14 @@ export default function CelonisLanding() {
                 <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
                   <Award className="w-7 h-7 text-white" />
                 </div>
-                <CardTitle className="text-xl font-bold">Certified Excellence</CardTitle>
+                <CardTitle className="text-xl font-bold">
+                  Certified Excellence
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base text-slate-600">
-                  Official Celonis partnership ensures cutting-edge technology access and proven methodologies.
+                  Official Celonis partnership ensures cutting-edge technology
+                  access and proven methodologies.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -414,11 +587,14 @@ export default function CelonisLanding() {
                 <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
                   <Network className="w-7 h-7 text-white" />
                 </div>
-                <CardTitle className="text-xl font-bold">Deep Industry Expertise</CardTitle>
+                <CardTitle className="text-xl font-bold">
+                  Deep Industry Expertise
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base text-slate-600">
-                  Specialized consultants with proven track records across manufacturing, finance, and logistics.
+                  Specialized consultants with proven track records across
+                  manufacturing, finance, and logistics.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -428,11 +604,14 @@ export default function CelonisLanding() {
                 <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
                   <Target className="w-7 h-7 text-white" />
                 </div>
-                <CardTitle className="text-xl font-bold">Tailored Solutions</CardTitle>
+                <CardTitle className="text-xl font-bold">
+                  Tailored Solutions
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base text-slate-600">
-                  Custom implementations aligned to your unique business goals and operational requirements.
+                  Custom implementations aligned to your unique business goals
+                  and operational requirements.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -442,11 +621,14 @@ export default function CelonisLanding() {
                 <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
                   <Layers className="w-7 h-7 text-white" />
                 </div>
-                <CardTitle className="text-xl font-bold">End-to-End Journey</CardTitle>
+                <CardTitle className="text-xl font-bold">
+                  End-to-End Journey
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base text-slate-600">
-                  Complete support from initial assessment through deployment, training, and continuous optimization.
+                  Complete support from initial assessment through deployment,
+                  training, and continuous optimization.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -456,11 +638,14 @@ export default function CelonisLanding() {
                 <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
                   <BarChart3 className="w-7 h-7 text-white" />
                 </div>
-                <CardTitle className="text-xl font-bold">AI-Powered Insights</CardTitle>
+                <CardTitle className="text-xl font-bold">
+                  AI-Powered Insights
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base text-slate-600">
-                  Transform complex process data into clear, actionable intelligence that drives measurable results.
+                  Transform complex process data into clear, actionable
+                  intelligence that drives measurable results.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -474,7 +659,8 @@ export default function CelonisLanding() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base text-slate-600">
-                  Accelerated deployment methodology ensures quick time-to-value with measurable business impact.
+                  Accelerated deployment methodology ensures quick time-to-value
+                  with measurable business impact.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -487,10 +673,12 @@ export default function CelonisLanding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              AOT <span className="text-red-600">Process Intelligence</span> Practice Areas?
+              AOT <span className="text-red-600">Process Intelligence</span>{" "}
+              Practice Areas?
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Comprehensive Celonis implementation and consulting services tailored to your business needs.
+              Comprehensive Celonis implementation and consulting services
+              tailored to your business needs.
             </p>
           </div>
 
@@ -521,7 +709,8 @@ export default function CelonisLanding() {
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                      Comprehensive analysis and visualization of your current business processes.
+                      Comprehensive analysis and visualization of your current
+                      business processes.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -531,11 +720,14 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <Settings className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Conformance Checking</CardTitle>
+                    <CardTitle className="text-lg">
+                      Conformance Checking
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                      The process of comparing the discovered process model with the intended or reference model to detect deviations
+                      The process of comparing the discovered process model with
+                      the intended or reference model to detect deviations
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -545,11 +737,14 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <BarChart className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Performance Analysis</CardTitle>
+                    <CardTitle className="text-lg">
+                      Performance Analysis
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                      Measures key metrics such as cycle times, bottlenecks, and throughput using timestamped event data.
+                      Measures key metrics such as cycle times, bottlenecks, and
+                      throughput using timestamped event data.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -559,11 +754,14 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <Eye className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Predictive Analytics</CardTitle>
+                    <CardTitle className="text-lg">
+                      Predictive Analytics
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                      Uses historical data and machine learning to forecast potential outcomes, such as delays or compliance risks
+                      Uses historical data and machine learning to forecast
+                      potential outcomes, such as delays or compliance risks
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -573,11 +771,14 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <Zap className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Process Optimization & Automation</CardTitle>
+                    <CardTitle className="text-lg">
+                      Process Optimization & Automation
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                     Leverages insights from process mining to redesign processes 
+                      Leverages insights from process mining to redesign
+                      processes
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -591,10 +792,15 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <Target className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Assessment & Strategy Development</CardTitle>
+                    <CardTitle className="text-lg">
+                      Assessment & Strategy Development
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription>Comprehensive evaluation of current state and strategic planning.</CardDescription>
+                    <CardDescription>
+                      Comprehensive evaluation of current state and strategic
+                      planning.
+                    </CardDescription>
                   </CardContent>
                 </Card>
 
@@ -603,10 +809,15 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <CheckCircle className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Use Case Identification</CardTitle>
+                    <CardTitle className="text-lg">
+                      Use Case Identification
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription>Prioritize high-impact opportunities for maximum business value.</CardDescription>
+                    <CardDescription>
+                      Prioritize high-impact opportunities for maximum business
+                      value.
+                    </CardDescription>
                   </CardContent>
                 </Card>
 
@@ -615,11 +826,14 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <ArrowUp className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Roadmap & Implementation Planning</CardTitle>
+                    <CardTitle className="text-lg">
+                      Roadmap & Implementation Planning
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                      Detailed project planning with timelines, resources, and milestones.
+                      Detailed project planning with timelines, resources, and
+                      milestones.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -629,11 +843,14 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <Users className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Change Management & Training</CardTitle>
+                    <CardTitle className="text-lg">
+                      Change Management & Training
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                      Enable teams to leverage insights through comprehensive training programs.
+                      Enable teams to leverage insights through comprehensive
+                      training programs.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -643,11 +860,14 @@ export default function CelonisLanding() {
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-3">
                       <RefreshCw className="w-6 h-6 text-red-600" />
                     </div>
-                    <CardTitle className="text-lg">Continuous Improvement</CardTitle>
+                    <CardTitle className="text-lg">
+                      Continuous Improvement
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                      Ongoing optimization and enhancement of process mining capabilities.
+                      Ongoing optimization and enhancement of process mining
+                      capabilities.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -661,9 +881,12 @@ export default function CelonisLanding() {
       <section id="benefits" className="py-20 bg-gradient-modern">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">Key Benefits</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              Key Benefits
+            </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Transform your operations with measurable improvements across all business functions.
+              Transform your operations with measurable improvements across all
+              business functions.
             </p>
           </div>
 
@@ -674,9 +897,12 @@ export default function CelonisLanding() {
                   <Eye className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Real-time Visibility into Operations</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    Real-time Visibility into Operations
+                  </h3>
                   <p className="text-slate-600">
-                    Gain complete transparency into your business processes with live data and insights.
+                    Gain complete transparency into your business processes with
+                    live data and insights.
                   </p>
                 </div>
               </div>
@@ -686,9 +912,12 @@ export default function CelonisLanding() {
                   <AlertTriangle className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Detect & Eliminate Inefficiencies</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    Detect & Eliminate Inefficiencies
+                  </h3>
                   <p className="text-slate-600">
-                    Identify bottlenecks, compliance risks, and process deviations before they impact performance.
+                    Identify bottlenecks, compliance risks, and process
+                    deviations before they impact performance.
                   </p>
                 </div>
               </div>
@@ -698,9 +927,12 @@ export default function CelonisLanding() {
                   <Heart className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Enhance Customer Experience</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    Enhance Customer Experience
+                  </h3>
                   <p className="text-slate-600">
-                    Optimize workflows to deliver faster, more consistent service to your customers.
+                    Optimize workflows to deliver faster, more consistent
+                    service to your customers.
                   </p>
                 </div>
               </div>
@@ -712,9 +944,12 @@ export default function CelonisLanding() {
                   <BarChart3 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Support Data-Driven Decision Making</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    Support Data-Driven Decision Making
+                  </h3>
                   <p className="text-slate-600">
-                    Empower leaders at all levels with actionable insights based on actual process data.
+                    Empower leaders at all levels with actionable insights based
+                    on actual process data.
                   </p>
                 </div>
               </div>
@@ -724,9 +959,12 @@ export default function CelonisLanding() {
                   <TrendingUp className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Achieve Operational Excellence</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    Achieve Operational Excellence
+                  </h3>
                   <p className="text-slate-600">
-                    Accelerate your journey to operational excellence with proven methodologies and best practices.
+                    Accelerate your journey to operational excellence with
+                    proven methodologies and best practices.
                   </p>
                 </div>
               </div>
@@ -736,15 +974,19 @@ export default function CelonisLanding() {
       </section>
 
       {/* Enhanced Partner Section */}
-      <section id="partner" className="py-20 bg-slate-900 text-white overflow-hidden">
+      <section
+        id="partner"
+        className="py-20 bg-slate-900 text-white overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Trusted <span className="text-red-400">Celonis Partnership</span>
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Our certified partnership with Celonis ensures you receive world-class process mining technology backed by
-              local expertise in the Saudi Arabian market.
+              Our certified partnership with Celonis ensures you receive
+              world-class process mining technology backed by local expertise in
+              the Saudi Arabian market.
             </p>
           </div>
 
@@ -756,9 +998,12 @@ export default function CelonisLanding() {
                     <Award className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Certified Implementation Partner</h3>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      Certified Implementation Partner
+                    </h3>
                     <p className="text-slate-300">
-                      Direct access to Celonis resources, latest features, and proven implementation methodologies.
+                      Direct access to Celonis resources, latest features, and
+                      proven implementation methodologies.
                     </p>
                   </div>
                 </div>
@@ -768,9 +1013,12 @@ export default function CelonisLanding() {
                     <Network className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Local Market Expertise</h3>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      Local Market Expertise
+                    </h3>
                     <p className="text-slate-300">
-                      Deep understanding of Saudi Arabian business requirements and regulatory compliance needs.
+                      Deep understanding of Saudi Arabian business requirements
+                      and regulatory compliance needs.
                     </p>
                   </div>
                 </div>
@@ -780,9 +1028,12 @@ export default function CelonisLanding() {
                     <Zap className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Accelerated Time-to-Value</h3>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      Accelerated Time-to-Value
+                    </h3>
                     <p className="text-slate-300">
-                      De-risk your adoption journey with proven methodologies and continuous support framework.
+                      De-risk your adoption journey with proven methodologies
+                      and continuous support framework.
                     </p>
                   </div>
                 </div>
@@ -794,10 +1045,18 @@ export default function CelonisLanding() {
                 <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-3xl p-8 lg:p-12 shadow-2xl border border-slate-600">
                   <div className="text-center">
                     <div className="w-24 h-24 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                      <img src="/Celonis Logo.png" alt="AOT Logo" className="h-10 w-auto" />
+                      <img
+                        src="/Celonis Logo.png"
+                        alt="AOT Logo"
+                        className="h-10 w-auto"
+                      />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Official Celonis Partner</h3>
-                    <p className="text-slate-300 mb-6">Certified Implementation & Consulting Partner</p>
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      Official Celonis Partner
+                    </h3>
+                    <p className="text-slate-300 mb-6">
+                      Certified Implementation & Consulting Partner
+                    </p>
                   </div>
                 </div>
 
@@ -812,63 +1071,88 @@ export default function CelonisLanding() {
 
       {/* Process Timeline */}
       <section className="py-20 bg-gradient-modern">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-16 animate-on-scroll">
-      <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">Our Process</h2>
-      <p className="text-xl text-slate-600">A proven methodology that delivers results at every stage</p>
-    </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-on-scroll">
+            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              Our Process
+            </h2>
+            <p className="text-xl text-slate-600">
+              A proven methodology that delivers results at every stage
+            </p>
+          </div>
 
-    <div className="grid md:grid-cols-5 gap-8">
-      {/* Connect */}
-      <div className="text-center animate-on-scroll">
-        <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <Link className="w-10 h-10 text-white" /> {/* Better for "Connect" */}
+          <div className="grid md:grid-cols-5 gap-8">
+            {/* Connect */}
+            <div className="text-center animate-on-scroll">
+              <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <Link className="w-10 h-10 text-white" />{" "}
+                {/* Better for "Connect" */}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Connect</h3>
+              <p className="text-slate-600">
+                Seamless connection of ERP, CRM, and other systems with data
+                preparation.
+              </p>
+            </div>
+
+            {/* Discover */}
+            <div className="text-center animate-on-scroll">
+              <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <Search className="w-10 h-10 text-white" />{" "}
+                {/* Fits "Discover" */}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">
+                Discover
+              </h3>
+              <p className="text-slate-600">
+                Comprehensive analysis and visualization of your current
+                business processes.
+              </p>
+            </div>
+
+            {/* Analyze */}
+            <div className="text-center animate-on-scroll">
+              <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <BarChart className="w-10 h-10 text-white" />{" "}
+                {/* Best for "Analyze" */}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Analyze</h3>
+              <p className="text-slate-600">
+                Identify bottlenecks, deviations, and inefficiencies for
+                targeted improvements.
+              </p>
+            </div>
+
+            {/* Optimize */}
+            <div className="text-center animate-on-scroll">
+              <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <Settings className="w-10 h-10 text-white" />{" "}
+                {/* Perfect for "Optimize" */}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">
+                Optimize
+              </h3>
+              <p className="text-slate-600">
+                Implement automated workflows and actionable improvement
+                strategies.
+              </p>
+            </div>
+
+            {/* Scale */}
+            <div className="text-center animate-on-scroll">
+              <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <TrendingUp className="w-10 h-10 text-white" />{" "}
+                {/* Better than ArrowUp */}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Scale</h3>
+              <p className="text-slate-600">
+                Expand success across the organization with continuous
+                improvement.
+              </p>
+            </div>
+          </div>
         </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Connect</h3>
-        <p className="text-slate-600">Seamless connection of ERP, CRM, and other systems with data preparation.</p>
-      </div>
-
-      {/* Discover */}
-      <div className="text-center animate-on-scroll">
-        <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <Search className="w-10 h-10 text-white" /> {/* Fits "Discover" */}
-        </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Discover</h3>
-        <p className="text-slate-600">Comprehensive analysis and visualization of your current business processes.</p>
-      </div>
-
-      {/* Analyze */}
-      <div className="text-center animate-on-scroll">
-        <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <BarChart className="w-10 h-10 text-white" /> {/* Best for "Analyze" */}
-        </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Analyze</h3>
-        <p className="text-slate-600">Identify bottlenecks, deviations, and inefficiencies for targeted improvements.</p>
-      </div>
-
-      {/* Optimize */}
-      <div className="text-center animate-on-scroll">
-        <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <Settings className="w-10 h-10 text-white" /> {/* Perfect for "Optimize" */}
-        </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Optimize</h3>
-        <p className="text-slate-600">Implement automated workflows and actionable improvement strategies.</p>
-      </div>
-
-      {/* Scale */}
-      <div className="text-center animate-on-scroll">
-        <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <TrendingUp className="w-10 h-10 text-white" /> {/* Better than ArrowUp */}
-        </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Scale</h3>
-        <p className="text-slate-600">Expand success across the organization with continuous improvement.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
+      </section>
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll">
@@ -876,7 +1160,8 @@ export default function CelonisLanding() {
               Why Work <span className="text-red-600">With Us?</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Experience the difference of working with certified Celonis experts who understand your market
+              Experience the difference of working with certified Celonis
+              experts who understand your market
             </p>
           </div>
 
@@ -885,47 +1170,69 @@ export default function CelonisLanding() {
               <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Free Initial Consultation</h3>
-              <p className="text-slate-600 text-sm">Comprehensive assessment and strategic planning at no cost</p>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">
+                Free Initial Consultation
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Comprehensive assessment and strategic planning at no cost
+              </p>
             </div>
 
             <div className="text-center animate-on-scroll">
               <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Certified Celonis Experts</h3>
-              <p className="text-slate-600 text-sm">Official Celonis partnership ensures quality and support</p>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">
+                Certified Celonis Experts
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Official Celonis partnership ensures quality and support
+              </p>
             </div>
 
             <div className="text-center animate-on-scroll">
               <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Network className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Local Market Presence</h3>
-              <p className="text-slate-600 text-sm">Deep understanding of Saudi Arabian business landscape</p>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">
+                Local Market Presence
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Deep understanding of Saudi Arabian business landscape
+              </p>
             </div>
 
             <div className="text-center animate-on-scroll">
               <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Proven Track Record</h3>
-              <p className="text-slate-600 text-sm">50+ successful implementations across various industries</p>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">
+                Proven Track Record
+              </h3>
+              <p className="text-slate-600 text-sm">
+                50+ successful implementations across various industries
+              </p>
             </div>
           </div>
 
-          <div className="mt-16 bg-gradient-to-br from-red-50 to-red-100 rounded-3xl p-8 lg:p-12 animate-on-scroll">
+          <div className="mt-16 bg-gradient-modern rounded-3xl p-8 lg:p-12 animate-on-scroll">
             <div className="grid lg:grid-cols-3 gap-8 items-center">
               <div className="text-center lg:text-left">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Success Guarantee</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  Success Guarantee
+                </h3>
                 <p className="text-slate-600">
-                  We're so confident in our approach that we guarantee measurable results within the first 90 days of
-                  implementation.
+                  We're so confident in our approach that we guarantee
+                  measurable results within the first 90 days of implementation.
                 </p>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-red-600 mb-2">90 Days</div>
-                <p className="text-slate-600 font-medium">To Measurable Results</p>
+                <div className="text-4xl font-bold text-red-600 mb-2">
+                  90 Days
+                </div>
+                <p className="text-slate-600 font-medium">
+                  To Measurable Results
+                </p>
               </div>
               <div className="text-center lg:text-right">
                 <Button
@@ -948,8 +1255,9 @@ export default function CelonisLanding() {
               Ready to Get <span className="text-red-400">Started?</span>
             </h2>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-              Transform your business with Process Intelligence. Let's discuss how Celonis can drive measurable
-              improvements in your organization.
+              Transform your business with Process Intelligence. Let's discuss
+              how Celonis can drive measurable improvements in your
+              organization.
             </p>
           </div>
 
@@ -958,24 +1266,36 @@ export default function CelonisLanding() {
               <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold text-xl">1</span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Schedule Consultation</h3>
-              <p className="text-slate-300 text-sm">Book a free 30-minute discovery call with our experts</p>
+              <h3 className="text-lg font-bold text-white mb-2">
+                Schedule Consultation
+              </h3>
+              <p className="text-slate-300 text-sm">
+                Book a free 30-minute discovery call with our experts
+              </p>
             </div>
 
             <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
               <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold text-xl">2</span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Process Assessment</h3>
-              <p className="text-slate-300 text-sm">We analyze your current processes and identify opportunities</p>
+              <h3 className="text-lg font-bold text-white mb-2">
+                Process Assessment
+              </h3>
+              <p className="text-slate-300 text-sm">
+                We analyze your current processes and identify opportunities
+              </p>
             </div>
 
             <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
               <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold text-xl">3</span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Implementation Plan</h3>
-              <p className="text-slate-300 text-sm">Receive a customized roadmap for your Celonis journey</p>
+              <h3 className="text-lg font-bold text-white mb-2">
+                Implementation Plan
+              </h3>
+              <p className="text-slate-300 text-sm">
+                Receive a customized roadmap for your Celonis journey
+              </p>
             </div>
           </div>
 
@@ -990,7 +1310,7 @@ export default function CelonisLanding() {
             <Button
               variant="outline"
               size="lg"
-              className="border-red-400 text-red-400 hover:bg-red-400 hover:text-slate-900 px-8 py-4 text-lg bg-transparent"
+              className="border-white-400 text-write-400 hover:bg-red-600 hover:border-red-600 hover:text-white-700 px-8 py-4 text-lg bg-transparent"
             >
               Download Case Studies
             </Button>
@@ -1002,16 +1322,25 @@ export default function CelonisLanding() {
       <section id="contact" className="py-20 bg-gradient-modern">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">Contact Our Experts</h2>
-            <p className="text-xl text-slate-600">Get in touch to discuss your specific process mining requirements</p>
+            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              Contact Our Experts
+            </h2>
+            <p className="text-xl text-slate-600">
+              Get in touch to discuss your specific process mining requirements
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="animate-on-scroll">
               <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold">Send us a message</CardTitle>
-                  <CardDescription>Fill out the form below and we'll get back to you within 24 hours.</CardDescription>
+                  <CardTitle className="text-2xl font-bold">
+                    Send us a message
+                  </CardTitle>
+                  <CardDescription>
+                    Fill out the form below and we'll get back to you within 24
+                    hours.
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -1021,7 +1350,9 @@ export default function CelonisLanding() {
                         <Input
                           id="name"
                           value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({ ...formData, name: e.target.value })
+                          }
                           required
                         />
                       </div>
@@ -1031,7 +1362,9 @@ export default function CelonisLanding() {
                           id="email"
                           type="email"
                           value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({ ...formData, email: e.target.value })
+                          }
                           required
                         />
                       </div>
@@ -1043,7 +1376,12 @@ export default function CelonisLanding() {
                         <Input
                           id="company"
                           value={formData.company}
-                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              company: e.target.value,
+                            })
+                          }
                           required
                         />
                       </div>
@@ -1053,7 +1391,9 @@ export default function CelonisLanding() {
                           id="phone"
                           type="tel"
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({ ...formData, phone: e.target.value })
+                          }
                         />
                       </div>
                     </div>
@@ -1064,12 +1404,17 @@ export default function CelonisLanding() {
                         id="message"
                         rows={4}
                         value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, message: e.target.value })
+                        }
                         placeholder="Tell us about your process mining needs..."
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white">
+                    <Button
+                      type="submit"
+                      className="w-full bg-red-600 hover:bg-red-700 text-white"
+                    >
                       Send Message
                     </Button>
                   </form>
@@ -1079,7 +1424,9 @@ export default function CelonisLanding() {
 
             <div className="space-y-8 animate-on-scroll">
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Contact Information</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">
+                  Contact Information
+                </h3>
                 <div className="space-y-4">
                   <div>
                     <div className="font-medium text-slate-900">Email</div>
@@ -1093,25 +1440,33 @@ export default function CelonisLanding() {
               </div>
 
               <div className="bg-gradient-to-br from-slate-50 to-red-50 rounded-xl p-6">
-                <h4 className="font-bold text-slate-900 mb-4">What happens next?</h4>
+                <h4 className="font-bold text-slate-900 mb-4">
+                  What happens next?
+                </h4>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-white text-xs font-bold">1</span>
                     </div>
-                    <span className="text-slate-600 text-sm">We'll review your inquiry within 4 hours</span>
+                    <span className="text-slate-600 text-sm">
+                      We'll review your inquiry within 4 hours
+                    </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-white text-xs font-bold">2</span>
                     </div>
-                    <span className="text-slate-600 text-sm">Schedule a 30-minute discovery call</span>
+                    <span className="text-slate-600 text-sm">
+                      Schedule a 30-minute discovery call
+                    </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-white text-xs font-bold">3</span>
                     </div>
-                    <span className="text-slate-600 text-sm">Receive a customized proposal and roadmap</span>
+                    <span className="text-slate-600 text-sm">
+                      Receive a customized proposal and roadmap
+                    </span>
                   </div>
                 </div>
               </div>
@@ -1121,13 +1476,19 @@ export default function CelonisLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
+      {/* <footer className="bg-slate-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent mb-4 text-center">
-              <img src="/aot-logo.png" alt="AOT Logo" className="h-10 w-auto m-auto" />
+              <img
+                src="/aot-logo.png"
+                alt="AOT Logo"
+                className="h-10 w-auto m-auto"
+              />
             </div>
-            <p className="text-slate-400 mb-6">Your Trusted Partner in Business Process Optimization</p>
+            <p className="text-slate-400 mb-6">
+              Your Trusted Partner in Business Process Optimization
+            </p>
             <div className="flex justify-center space-x-6 text-sm text-slate-500">
               <a href="#" className="hover:text-red-400 transition-colors">
                 Privacy Policy
@@ -1135,13 +1496,17 @@ export default function CelonisLanding() {
               <a href="#" className="hover:text-red-400 transition-colors">
                 Terms of Service
               </a>
-              <a href="#contact" className="hover:text-red-400 transition-colors">
+              <a
+                href="#contact"
+                className="hover:text-red-400 transition-colors"
+                className="hover:text-red-400 transition-colors"
+              >
                 Contact
               </a>
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
-  )
+  );
 }
