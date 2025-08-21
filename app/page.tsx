@@ -1438,7 +1438,7 @@ export default function CelonisLanding() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-slate-50 to-red-50 rounded-xl p-6">
+              <div className="bg-[#fff] rounded-xl p-6">
                 <h4 className="font-bold text-slate-900 mb-4">
                   What happens next?
                 </h4>
