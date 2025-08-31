@@ -274,7 +274,7 @@ export default function CelonisLanding() {
                 — Faster
               </h1>
 
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+              <p className="text-xl text-black mb-8 leading-relaxed">
                 Unlock operational excellence with AI-powered process
                 intelligence. We transform your data into measurable business
                 impact through certified Celonis expertise in Saudi Arabia.
@@ -301,7 +301,8 @@ export default function CelonisLanding() {
 
             <div className="lg:pl-12 animate-float">
               <div className="relative">
-                <div className="bg-[white] rounded-3xl p-8 lg:p-12 shadow-2xl">
+                {/* CHANGED: bg-white → glass-card */}
+                <div className="glass-card rounded-3xl p-8 lg:p-12">
                   <svg viewBox="0 0 400 300" className="w-full h-auto">
                     <defs>
                       <linearGradient
@@ -450,7 +451,7 @@ export default function CelonisLanding() {
                       />
                     </line>
 
-                    {/* Modern labels with icons */}
+                    {/* Labels */}
                     <text
                       x="80"
                       y="155"
@@ -494,8 +495,9 @@ export default function CelonisLanding() {
                   </svg>
                 </div>
 
+                {/* CHANGED: bg-white → glass-badge (kept positions/animation) */}
                 <div
-                  className="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-3 animate-float"
+                  className="absolute -top-4 -right-4 glass-badge p-3 animate-float"
                   style={{ animationDelay: "1s" }}
                 >
                   <div className="flex items-center gap-2">
@@ -507,7 +509,7 @@ export default function CelonisLanding() {
                 </div>
 
                 <div
-                  className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg p-3 animate-float"
+                  className="absolute -bottom-4 -left-4 glass-badge p-3 animate-float"
                   style={{ animationDelay: "2s" }}
                 >
                   <div className="flex items-center gap-2">
@@ -1059,10 +1061,6 @@ export default function CelonisLanding() {
                     </p>
                   </div>
                 </div>
-
-                <div className="absolute -top-4 -right-4 bg-red-500 text-white rounded-lg px-3 py-1 text-sm font-bold animate-pulse">
-                  Certified
-                </div>
               </div>
             </div>
           </div>
@@ -1160,7 +1158,9 @@ export default function CelonisLanding() {
               Why Work <span className="text-red-600">With Us?</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Your Trusted Partner in Business Process Optimization — Experience the difference of working with certified Celonis experts who understand your market.
+              Your Trusted Partner in Business Process Optimization — Experience
+              the difference of working with certified Celonis experts who
+              understand your market.
             </p>
           </div>
 
