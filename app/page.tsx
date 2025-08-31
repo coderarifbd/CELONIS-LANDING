@@ -497,7 +497,7 @@ export default function CelonisLanding() {
 
                 {/* CHANGED: bg-white → glass-badge (kept positions/animation) */}
                 <div
-                  className="absolute -top-4 -right-4 glass-badge p-3 animate-float"
+                  className="absolute -top-4 -right-4 bg-white p-3 animate-float rounded-full"
                   style={{ animationDelay: "1s" }}
                 >
                   <div className="flex items-center gap-2">
@@ -509,7 +509,7 @@ export default function CelonisLanding() {
                 </div>
 
                 <div
-                  className="absolute -bottom-4 -left-4 glass-badge p-3 animate-float"
+                  className="absolute -bottom-4 -left-4 bg-white rounded-full p-3 animate-float"
                   style={{ animationDelay: "2s" }}
                 >
                   <div className="flex items-center gap-2">
